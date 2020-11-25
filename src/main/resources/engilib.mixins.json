@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "io.engi.fabricmc.lib.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "MixinItemRenderer",
+    "MixinMinecraftClient"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
