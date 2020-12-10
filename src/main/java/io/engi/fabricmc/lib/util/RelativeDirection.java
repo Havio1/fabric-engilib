@@ -1,5 +1,6 @@
 package io.engi.fabricmc.lib.util;
 
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 
 public enum RelativeDirection {
@@ -26,6 +27,14 @@ public enum RelativeDirection {
                 return Direction.DOWN;
         }
         return normal;
+    }
+
+    public BlockPos offset(BlockPos origin, Direction normal) {
+        return origin.offset(toAbsolute(normal));
+    }
+
+    public BlockPos offset(BlockPos origin, Direction normal, int step) {
+        return origin.offset(toAbsolute(normal), step);
     }
 
     public static RelativeDirection fromAbsolute(Direction dir, Direction normal) {
