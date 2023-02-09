@@ -28,7 +28,7 @@ public abstract class MixinItemRenderer {
             if (!durItem.showDurability(stack)) return;
             RenderSystem.disableDepthTest();
             RenderSystem.disableTexture();
-            RenderSystem.disableAlphaTest();
+            RenderSystem.disableBlend();
             RenderSystem.disableBlend();
             Tessellator tessellator = Tessellator.getInstance();
             BufferBuilder bufferBuilder = tessellator.getBuffer();
@@ -39,7 +39,7 @@ public abstract class MixinItemRenderer {
             this.renderGuiQuad(bufferBuilder, x + 2, y + 13, durability, 1, color >> 16 & 255, color >> 8 & 255, color & 255, 255);
 
             RenderSystem.enableBlend();
-            RenderSystem.enableAlphaTest();
+            RenderSystem.enableBlend();
             RenderSystem.enableTexture();
             RenderSystem.enableDepthTest();
         }

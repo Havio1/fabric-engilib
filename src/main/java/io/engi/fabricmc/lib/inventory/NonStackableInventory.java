@@ -1,9 +1,9 @@
 package io.engi.fabricmc.lib.inventory;
 
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 
 public class NonStackableInventory extends VirtualInventory {
-    public NonStackableInventory(CompoundTag tag, int defaultSize) {
+    public NonStackableInventory(NbtCompound tag, int defaultSize) {
         super(tag, defaultSize);
     }
 

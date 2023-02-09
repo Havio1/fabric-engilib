@@ -4,7 +4,7 @@ import io.engi.fabricmc.lib.util.stream.ItemStream;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.collection.DefaultedList;
 
 public class InventoryHelper {
@@ -25,13 +25,13 @@ public class InventoryHelper {
         }
     }
 
-    public static CompoundTag toTag(CompoundTag tag, Inventory inventory) {
+    public static NbtCompound toTag(NbtCompound tag, Inventory inventory) {
         DefaultedList<ItemStack> items = DefaultedList.ofSize(inventory.size(), ItemStack.EMPTY);
         for (int i = 0; i < inventory.size(); i++) {
             items.set(i, inventory.getStack(i));
         }
-        CompoundTag invTag = tag.getCompound("Inventory");
+        NbtCompound invTag = tag.getCompound("Inventory");
         invTag.putInt("Size", inventory.size());
-        return Inventories.toTag(invTag, items);
+        return Inventories.writeNbt(invTag, items);
     }
 }

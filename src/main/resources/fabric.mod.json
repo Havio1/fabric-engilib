@@ -8,18 +8,18 @@
   "authors": [
     "EngiN33R"
   ],
-
   "environment": "*",
   "entrypoints": {
-    "main": []
+    "main": [],
+    "client": []
   },
   "mixins": [
     "engilib.mixins.json"
   ],
 
   "depends": {
-    "fabricloader": ">=0.10.8",
+    "fabricloader": ">=0.14.11",
     "fabric": "*",
-    "minecraft": "1.16.x"
+    "minecraft": "1.19.x"
   }
 }

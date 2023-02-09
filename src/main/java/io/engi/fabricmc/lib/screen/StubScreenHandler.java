@@ -5,7 +5,7 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import org.jetbrains.annotations.Nullable;
 
-public class StubScreenHandler extends ScreenHandler {
+public abstract class StubScreenHandler extends ScreenHandler {
     public StubScreenHandler(@Nullable ScreenHandlerType<?> type, int syncId) {
         super(type, syncId);
     }

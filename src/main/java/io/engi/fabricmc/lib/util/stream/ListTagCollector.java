@@ -1,8 +1,9 @@
 package io.engi.fabricmc.lib.util.stream;
 
 import com.google.common.collect.ImmutableSet;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
+import net.minecraft.nbt.NbtElement;
+import net.minecraft.nbt.NbtList;
+import com.mojang.datafixers.types.templates.Tag;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -12,7 +13,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 
-public class ListTagCollector implements Collector<Tag, ArrayList<Tag>, ListTag> {
+public class ListTagCollector implements Collector<Tag, ArrayList<Tag>, NbtList> {
     @Override
     public Supplier<ArrayList<Tag>> supplier() {
         return ArrayList::new;
@@ -32,10 +33,10 @@ public class ListTagCollector implements Collector<Tag, ArrayList<Tag>, ListTag>
     }
 
     @Override
-    public Function<ArrayList<Tag>, ListTag> finisher() {
+    public Function<ArrayList<Tag>, NbtList> finisher() {
         return tags -> {
-            ListTag tag = new ListTag();
-            tag.addAll(tags);
+            NbtList tag = new NbtList();
+            tag.add((NbtElement) tags);
             return tag;
         };
     }

@@ -7,7 +7,8 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.InventoryChangedListener;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
+// import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.collection.DefaultedList;
 
 import java.util.ArrayList;
@@ -33,19 +34,19 @@ public class VirtualInventory implements Inventory, Iterable<ItemStack> {
         }
     }
 
-    public VirtualInventory(CompoundTag tag) {
+    public VirtualInventory(NbtCompound tag) {
         this(tag, 0);
     }
 
-    public VirtualInventory(CompoundTag tag, int defaultSize) {
+    public VirtualInventory(NbtCompound tag, int defaultSize) {
         int size = tag.getInt("Size");
         if (size == 0) size = defaultSize;
         stacks = DefaultedList.ofSize(size, ItemStack.EMPTY);
-        Inventories.fromTag(tag, stacks);
+        Inventories.readNbt(tag, stacks);
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public CompoundTag toTag(CompoundTag tag, Inventory inventory) {
+    public NbtCompound toTag(NbtCompound tag, Inventory inventory) {
         return InventoryHelper.toTag(tag, inventory);
     }
 
